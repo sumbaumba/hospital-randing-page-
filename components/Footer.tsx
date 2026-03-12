@@ -12,16 +12,17 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-7 h-7 rounded-lg bg-royal-blue flex items-center justify-center">
-                <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-                  <path d="M2 4L8 2L14 4V10C14 12.5 11 14.5 8 15.5C5 14.5 2 12.5 2 10V4Z" stroke="white" strokeWidth="1.5" strokeLinejoin="round"/>
-                  <path d="M6 8L7.5 9.5L10 7" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </div>
-              <span className="font-serif font-bold text-white text-lg">
-                <span className="text-royal-blue">MED</span>TUBE
-              </span>
+            {/* 로고: 이미지 3508x2481, 콘텐츠 (1221,982)~(2287,1499)=1066x517 */}
+            {/* 스케일=68/517=0.1315 → backgroundSize:461px 326px */}
+            <div className="mb-4">
+              <div style={{
+                width: '140px',
+                height: '68px',
+                backgroundImage: 'url(/higher-logo.png)',
+                backgroundSize: '461px 326px',
+                backgroundPosition: '-160px -129px',
+                backgroundRepeat: 'no-repeat',
+              }} />
             </div>
             <p className="text-white/35 text-sm leading-relaxed max-w-xs">
               조회수가 아닌, 예약전환을 만드는<br />
@@ -57,19 +58,19 @@ export default function Footer() {
             <h4 className="text-white/50 text-xs font-semibold tracking-widest uppercase mb-4">Contact</h4>
             <ul className="space-y-3">
               <li>
-                <a href="tel:010-0000-0000" className="flex items-center gap-2.5 text-white/35 hover:text-white/70 text-sm transition-colors">
+                <a href="tel:010-3313-0388" className="flex items-center gap-2.5 text-white/35 hover:text-white/70 text-sm transition-colors">
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
                     <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
-                  010-0000-0000
+                  010-3313-0388
                 </a>
               </li>
               <li>
-                <a href="mailto:contact@medtube.kr" className="flex items-center gap-2.5 text-white/35 hover:text-white/70 text-sm transition-colors">
+                <a href="mailto:higher3pd@gmail.com" className="flex items-center gap-2.5 text-white/35 hover:text-white/70 text-sm transition-colors">
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
                     <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
-                  contact@medtube.kr
+                  higher3pd@gmail.com
                 </a>
               </li>
               <li className="flex items-center gap-3 pt-1">
@@ -99,7 +100,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="border-t border-white/5 pt-8 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-white/20 text-xs">
-            © {currentYear} MEDTUBE. All rights reserved.
+            © {currentYear} Higher Production. All rights reserved.
           </p>
           <div className="flex items-center gap-4 text-white/20 text-xs">
             <a href="#" className="hover:text-white/40 transition-colors">개인정보처리방침</a>

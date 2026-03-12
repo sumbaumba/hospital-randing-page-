@@ -16,6 +16,7 @@ export default function Navbar() {
     { label: '스토리', href: '#story' },
     { label: '솔루션', href: '#solution' },
     { label: '포트폴리오', href: '#portfolio' },
+    { label: '프로세스', href: '/logic' },
     { label: '문의', href: '#contact' },
   ]
 
