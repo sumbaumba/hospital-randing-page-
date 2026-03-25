@@ -3,7 +3,6 @@ import Hero from '@/components/Hero'
 import StorySection from '@/components/StorySection'
 import ProblemSection from '@/components/ProblemSection'
 import FocusSection from '@/components/FocusSection'
-import SolutionSection from '@/components/SolutionSection'
 import DifferenceSection from '@/components/DifferenceSection'
 import PortfolioSection from '@/components/PortfolioSection'
 import IdentitySection from '@/components/IdentitySection'
@@ -18,7 +17,6 @@ export default function Home() {
       <StorySection />
       <ProblemSection />
       <FocusSection />
-      <SolutionSection />
       <DifferenceSection />
       <PortfolioSection />
       <IdentitySection />

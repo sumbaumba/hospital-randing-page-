@@ -14,7 +14,7 @@ export default function Navbar() {
 
   const navLinks = [
     { label: '스토리', href: '#story' },
-    { label: '솔루션', href: '#solution' },
+    { label: '인사이트', href: '#insight' },
     { label: '포트폴리오', href: '#portfolio' },
     { label: '프로세스', href: '/logic' },
     { label: '문의', href: '#contact' },
@@ -49,7 +49,7 @@ export default function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-navy/55 hover:text-navy transition-colors duration-200"
+              className="text-base font-medium text-navy/55 hover:text-navy transition-colors duration-200"
             >
               {link.label}
             </a>
@@ -60,7 +60,7 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           <a
             href="#contact"
-            className="hidden sm:inline-flex items-center gap-2 bg-royal-blue hover:bg-royal-blue-light text-white text-sm font-bold px-6 py-3 rounded-xl transition-all duration-300 hover:scale-[1.03] blue-glow-sm"
+            className="hidden sm:inline-flex items-center gap-2 bg-royal-blue hover:bg-royal-blue-light text-white text-base font-bold px-6 py-3 rounded-xl transition-all duration-300 hover:scale-[1.03] blue-glow-sm"
           >
             무료 진단 신청
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">

@@ -5,8 +5,8 @@ import { useEffect, useRef } from 'react'
 const pillars = [
   {
     num: '01',
-    title: '정확한 타겟팅',
-    desc: '원장님의 관리가 필요한 환자만을 위한 콘텐츠',
+    title: '콘텐츠별 타겟팅 설정',
+    desc: '원장님의 관리가 필요한 다양한\n상황에 놓여진 환자별 타겟 구조설정',
     numColor: '#3B88FF',
     borderColor: 'border-royal-blue/20',
     bgColor: 'bg-blue-50/60',
@@ -14,15 +14,15 @@ const pillars = [
   {
     num: '02',
     title: '전환 중심 기획',
-    desc: '조회수가 아닌 예약전환을 위한 전략',
+    desc: '예약 전환을 위한\n하이어만의 프로세스 수립',
     numColor: '#007AFF',
     borderColor: 'border-royal-blue/30',
     bgColor: 'bg-blue-50/40',
   },
   {
     num: '03',
-    title: '유튜브 마케팅 전문',
-    desc: '저희가 자신있고, 잘하는 것만 진행합니다',
+    title: '\'유튜브 마케팅\' 전문가',
+    desc: '다른 마케팅 업무와 병행하지 않습니다.\n저희가 자신있고, 잘하는 것만 진행합니다',
     numColor: '#0057CC',
     borderColor: 'border-royal-blue/20',
     bgColor: 'bg-blue-50/50',
@@ -99,7 +99,7 @@ export default function FocusSection() {
                 </h3>
                 {/* Desc */}
                 <p
-                  className="text-navy/50 leading-relaxed"
+                  className="text-navy/50 leading-relaxed whitespace-pre-line"
                   style={{ fontSize: '1rem', wordBreak: 'keep-all' }}
                 >
                   {p.desc}

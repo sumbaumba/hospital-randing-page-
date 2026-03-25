@@ -5,20 +5,20 @@ import { useEffect, useRef } from 'react'
 const steps = [
   {
     emoji: '🎬',
-    title: '기획을 할 줄 모르던 PD 시절,',
-    desc: '원장님들께 그저 좋은 카메라, 좋은 편집으로 보답해드린다고 했습니다.',
+    title: '감각으로만 기획했던\nPD 시절',
+    desc: "'감각'을 통한 기획은\n시청자가 원하는 콘텐츠가\n될 수 없었습니다.",
     style: 'neutral',
   },
   {
     emoji: '💔',
     title: '결과는 처참했습니다.',
-    desc: "'제작 퀄리티'로 승부하는 시대는 지났습니다.",
+    desc: '전환율 0~1%,\n유튜브 제작에 돈만\n쏟아붓는 상황이 되었습니다.',
     style: 'red',
   },
   {
     emoji: '💡',
     title: '그래서 깨달았습니다.',
-    desc: '중요한 것은 카메라가 아니라, 전략과 기획이라는 것을요.',
+    desc: '중요한 것은 병원이 판매하는\n서비스에 맞춰 시청자의 감성을\n건드려야 한다는걸요.',
     style: 'blue',
   },
 ]
@@ -100,7 +100,7 @@ export default function StorySection() {
                       ? 'text-royal-blue'
                       : 'text-navy'
                   }`}
-                  style={{ fontSize: 'clamp(1.25rem, 2vw, 1.6rem)' }}
+                  style={{ fontSize: 'clamp(1.25rem, 2vw, 1.6rem)', whiteSpace: 'pre-line' }}
                 >
                   {s.title}
                 </h3>
@@ -114,7 +114,7 @@ export default function StorySection() {
                       ? 'text-navy/65'
                       : 'text-navy/60'
                   }`}
-                  style={{ fontSize: '1.05rem', wordBreak: 'keep-all' }}
+                  style={{ fontSize: '1.05rem', wordBreak: 'keep-all', whiteSpace: 'pre-line' }}
                 >
                   {s.desc}
                 </p>
@@ -157,11 +157,10 @@ export default function StorySection() {
               {/* 핵심 문구 — 크고 강하게 */}
               <p
                 className="font-serif font-bold text-navy leading-snug mb-4"
-                style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.6rem)' }}
+                style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.6rem)', wordBreak: 'keep-all' }}
               >
-                좋은 영상이 아닌,{' '}
-                <span className="gradient-text">좋은 기획</span>이<br className="hidden sm:block" />
-                병원을 채웁니다.
+                저희의 목표는 조회수와 구독자가 아닙니다.<br />
+                <span className="gradient-text">'매출이 증가되는 채널운영'</span>이 목표입니다.
               </p>
 
               {/* 서브 문구 */}
@@ -169,8 +168,8 @@ export default function StorySection() {
                 className="text-navy/50 leading-relaxed mx-auto"
                 style={{ fontSize: '1.1rem', maxWidth: '32rem', wordBreak: 'keep-all' }}
               >
-                저희는 처음부터 끝까지 조회수가 아닌,<br />
-                <span className="text-navy/75 font-medium">예약전환</span>을 위해 기획합니다.
+                좋은 영상이 아닌, 좋은 기획이<br />
+                병원을 채웁니다.
               </p>
             </div>
           </div>

@@ -9,7 +9,7 @@ const portfolioItems = [
   { name: '서울 은평점 피부과',   category: '홍보 영상',        desc: '진심어린 환대의 마음을 담아낸 프리미엄 병원 홍보 영상',         videoId: '3-iWgxCAvO0', url: 'https://youtu.be/3-iWgxCAvO0' },
   { name: '서울 강서점 비뇨기과', category: '유튜브 채널 운영', desc: '남성 건강 전문 콘텐츠로 신뢰를 쌓고 실제 예약으로 연결되는 채널', videoId: 'SKp4Wfvstmw', url: 'https://youtu.be/SKp4Wfvstmw' },
   { name: '서울 중구 치과',       category: '유튜브 채널 운영', desc: '치과 공포를 낮추고 전문의 신뢰를 높이는 콘텐츠 전략',           videoId: 'hxmkb6RHtEA', url: 'https://www.youtube.com/watch?v=hxmkb6RHtEA' },
-  { name: '서울 강서점 치과',     category: '유튜브 채널 운영', desc: '환자 관점에서 설계한 치과 정보 채널, 예약 전환 극대화',          videoId: '0YGthrfCNzk', url: 'https://youtu.be/0YGthrfCNzk' },
+  { name: '서울 강서점 치과',     category: '유튜브 채널 운영', desc: '환자 관점에서 설계한 치과 정보 채널, 예약 전환 극대화',          videoId: 'yBoet0OX__w', url: 'https://youtu.be/yBoet0OX__w?si=NxnalGcXf8guMUrQ' },
   { name: '경기 성남 한의원',     category: '유튜브 채널 운영', desc: '한방 치료의 현대적 가치를 전달하는 전문 콘텐츠 운영',            videoId: 'd6_-Ud2lXN8', url: 'https://youtu.be/d6_-Ud2lXN8' },
   { name: '인천 청라점 피부과',   category: '유튜브 채널 운영', desc: '지역 환자를 정확히 타겟하는 피부과 채널 마케팅',                 videoId: '0YGthrfCNzk', url: 'https://youtu.be/0YGthrfCNzk' },
   { name: '인천 송도점 피부과',   category: '유튜브 채널 운영', desc: '예약 전환에 최적화된 피부 케어 전문 유튜브 운영',               videoId: 'k7Ma_aasBHs', url: 'https://youtu.be/k7Ma_aasBHs' },
