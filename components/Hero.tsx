@@ -25,7 +25,8 @@ export default function Hero() {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white"
+      className="relative flex items-center justify-center overflow-hidden bg-white"
+      style={{ minHeight: '900px' }}
     >
       {/* Background gradient */}
       <div
