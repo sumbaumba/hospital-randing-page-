@@ -2,8 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
 export const viewport: Viewport = {
-  width: 'device-width',
-  initialScale: 1,
+  width: 1280,
 }
 
 export const metadata: Metadata = {
@@ -22,19 +21,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ko" suppressHydrationWarning>
       <head>
-        {/* 모바일에서 1280px 데스크탑 레이아웃을 화면에 맞게 CSS zoom으로 축소 */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-(function(){
-  var w = window.innerWidth;
-  if (w > 0 && w < 1280) {
-    document.documentElement.style.zoom = (w / 1280);
-  }
-})();
-`,
-          }}
-        />
         {/* Pretendard Font */}
         <link
           rel="stylesheet"
