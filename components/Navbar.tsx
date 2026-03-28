@@ -53,57 +53,59 @@ export default function Navbar() {
           }} />
         </a>
 
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className={`font-medium text-navy/55 hover:text-navy transition-colors duration-200 ${
-                isMobile ? 'text-3xl' : 'text-base'
-              }`}
-            >
-              {link.label}
-            </a>
-          ))}
-        </nav>
+        {/* Desktop Nav — isMobile 기반 제어 (CSS 브레이크포인트 대신) */}
+        {!isMobile && (
+          <nav className="flex items-center gap-8">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="font-medium text-navy/55 hover:text-navy transition-colors duration-200 text-base"
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
+        )}
 
-        {/* CTA */}
+        {/* CTA + 햄버거 */}
         <div className="flex items-center gap-3">
-          <a
-            href="#contact"
-            className={`hidden sm:inline-flex items-center gap-2 bg-royal-blue hover:bg-royal-blue-light text-white font-bold rounded-xl transition-all duration-300 hover:scale-[1.03] blue-glow-sm ${
-              isMobile ? 'text-2xl px-10 py-6' : 'text-base px-6 py-3'
-            }`}
-          >
-            무료 진단 신청
-            <svg width={isMobile ? 24 : 14} height={isMobile ? 24 : 14} viewBox="0 0 14 14" fill="none">
-              <path d="M2 7H12M8 3L12 7L8 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </a>
+          {!isMobile && (
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 bg-royal-blue hover:bg-royal-blue-light text-white font-bold rounded-xl transition-all duration-300 hover:scale-[1.03] blue-glow-sm text-base px-6 py-3"
+            >
+              무료 진단 신청
+              <svg width={14} height={14} viewBox="0 0 14 14" fill="none">
+                <path d="M2 7H12M8 3L12 7L8 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </a>
+          )}
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-navy/60 hover:text-navy p-1"
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="메뉴"
-          >
-            {menuOpen ? (
-              <svg width={isMobile ? 56 : 22} height={isMobile ? 56 : 22} viewBox="0 0 22 22" fill="none">
-                <path d="M4 4L18 18M18 4L4 18" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-              </svg>
-            ) : (
-              <svg width={isMobile ? 56 : 22} height={isMobile ? 56 : 22} viewBox="0 0 22 22" fill="none">
-                <path d="M3 6H19M3 11H19M3 16H19" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-              </svg>
-            )}
-          </button>
+          {/* 모바일 햄버거 버튼 */}
+          {isMobile && (
+            <button
+              className="text-navy/60 hover:text-navy p-2"
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label="메뉴"
+            >
+              {menuOpen ? (
+                <svg width={56} height={56} viewBox="0 0 22 22" fill="none">
+                  <path d="M4 4L18 18M18 4L4 18" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                </svg>
+              ) : (
+                <svg width={56} height={56} viewBox="0 0 22 22" fill="none">
+                  <path d="M3 6H19M3 11H19M3 16H19" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                </svg>
+              )}
+            </button>
+          )}
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      {menuOpen && (
-        <div className="md:hidden bg-white border-t border-navy/8 px-6 py-8 shadow-lg">
+      {/* 모바일 드롭다운 메뉴 */}
+      {isMobile && menuOpen && (
+        <div className="bg-white border-t border-navy/8 px-6 py-8 shadow-lg">
           <nav className="flex flex-col gap-6">
             {navLinks.map((link) => (
               <a
