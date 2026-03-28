@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { Fragment, useEffect, useRef } from 'react'
 
 const steps = [
   {
@@ -74,10 +74,9 @@ export default function StorySection() {
           style={{ gridTemplateColumns: '1fr auto 1fr auto 1fr' }}
         >
           {steps.map((s, i) => (
-            <>
+            <Fragment key={s.title}>
               {/* Card */}
               <div
-                key={s.title}
                 className={`rounded-3xl text-center flex flex-col items-center justify-start transition-all duration-300 hover:-translate-y-1 px-8 py-12 ${
                   s.style === 'red'
                     ? 'bg-red-50 border border-red-200'
@@ -122,7 +121,7 @@ export default function StorySection() {
 
               {/* Arrow connector — between cards only */}
               {i < steps.length - 1 && (
-                <div key={`arrow-${i}`} className="flex items-center justify-center px-3">
+                <div className="flex items-center justify-center px-3">
                   <div className="flex flex-col items-center gap-1.5">
                     <div className="w-8 h-px bg-navy/35" />
                     <svg width="12" height="16" viewBox="0 0 12 16" fill="none" className="text-navy/50">
@@ -132,7 +131,7 @@ export default function StorySection() {
                   </div>
                 </div>
               )}
-            </>
+            </Fragment>
           ))}
         </div>
 

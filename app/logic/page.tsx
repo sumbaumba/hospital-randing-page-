@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import PricingSection from '@/components/PricingSection'
 
 /* ── CountUp ──────────────────────────────────────── */
 function CountUp({ to, duration = 1800, active }: { to: number; duration?: number; active: boolean }) {
@@ -149,10 +150,10 @@ const compRows = [
 ]
 
 const funnelData = [
-  { label: '잠재 고객 유입', value: 10000, pct: 100, desc: '통합 콘텐츠 — 넓은 접점 확보', rate: null, isLast: false },
-  { label: '관심 고객 전환', value: 1000, pct: 65, desc: '핵심 콘텐츠 — 신뢰 · 전문성 구축', rate: '10%', isLast: false },
-  { label: '예약 의향 고객', value: 300, pct: 38, desc: '랜딩페이지 — 행동 유도 동선', rate: '30%', isLast: false },
-  { label: '실제 예약 환자', value: 100, pct: 20, desc: '최종 전환 — 진료실 입장', rate: '33.3%', isLast: true },
+  { label: '잠재 고객 유입', value: 10000, display: null, pct: 100, desc: '통합 콘텐츠 — 넓은 접점 확보', rate: null, isLast: false },
+  { label: '관심 고객 전환', value: 1000, display: null, pct: 65, desc: '핵심 콘텐츠 — 신뢰 · 전문성 구축', rate: '10%', isLast: false },
+  { label: '예약 의향 고객', value: 100, display: null, pct: 38, desc: '랜딩페이지 — 행동 유도 동선', rate: '10%', isLast: false },
+  { label: '실제 예약 환자', value: 100, display: '10~100명', pct: 38, desc: '최종 전환 — 진료실 입장', rate: '최대 100%', isLast: true },
 ]
 
 const deliverables = [
@@ -226,7 +227,7 @@ export default function LogicPage() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/96 backdrop-blur-md border-b border-navy/8 py-3 shadow-sm">
         <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
           {/* 로고 */}
-          <a href="/" aria-label="Higher Production 홈으로">
+          <a href="/" aria-label="Higher Production 홈으로" className="flex-shrink-0">
             <div style={{
               width: '120px', height: '58px',
               backgroundImage: 'url(/higher-logo-dark.png)',
@@ -235,13 +236,33 @@ export default function LogicPage() {
               backgroundRepeat: 'no-repeat',
             }} />
           </a>
+
+          {/* 중앙 네비게이션 */}
+          <nav className="hidden md:flex items-center gap-7">
+            {[
+              { label: '스토리', href: '/#story' },
+              { label: '인사이트', href: '/#insight' },
+              { label: '포트폴리오', href: '/#portfolio' },
+              { label: '프로세스', href: '/logic' },
+              { label: '플랜', href: '/#pricing' },
+              { label: '문의', href: '/#contact' },
+            ].map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className={`text-sm font-medium transition-colors duration-200 ${
+                  link.href === '/logic'
+                    ? 'text-royal-blue font-bold'
+                    : 'text-navy/50 hover:text-navy'
+                }`}
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
+
+          {/* CTA */}
           <div className="flex items-center gap-3">
-            <a href="/" className="hidden sm:inline-flex items-center gap-1.5 text-navy/45 hover:text-navy text-sm font-medium transition-colors">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                <path d="M9 2L4 7l5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-              홈으로
-            </a>
             <a href="/#contact"
               className="inline-flex items-center gap-2 bg-royal-blue hover:bg-royal-blue-light text-white text-sm font-bold px-5 py-2.5 rounded-xl transition-all duration-200 hover:scale-[1.02] blue-glow-sm"
             >
@@ -274,10 +295,24 @@ export default function LogicPage() {
             </div>
 
             <h1 className="font-serif font-bold text-navy mb-9"
-              style={{ fontSize: 'clamp(2.8rem, 8vw, 6rem)', lineHeight: 1.12, letterSpacing: '0.01em' }}
+              style={{ fontSize: 'clamp(2.8rem, 8vw, 6rem)', lineHeight: 1.2, letterSpacing: '0.01em' }}
             >
-              그래서 너네는<br />
-              <span className="gradient-text">뭐가 다른데요?</span>
+              그래서 하이어는<br />
+              <span
+                style={{
+                  fontFamily: "'Black Han Sans', sans-serif",
+                  color: '#DC2626',
+                  fontSize: 'clamp(3.4rem, 10vw, 8rem)',
+                  display: 'inline-block',
+                  transform: 'rotate(-2deg) skewX(-4deg)',
+                  letterSpacing: '-0.03em',
+                  lineHeight: 1.0,
+                  WebkitTextStroke: '2px #b91c1c',
+                  textShadow: '4px 4px 0px rgba(185,28,28,0.25)',
+                }}
+              >
+                뭐가 다른데요?
+              </span>
             </h1>
 
             <p className="text-navy/50 leading-relaxed mx-auto mb-12"
@@ -290,9 +325,9 @@ export default function LogicPage() {
             {/* 빠른 통계 3개 */}
             <div className="grid grid-cols-3 gap-4 max-w-2xl mx-auto mb-12">
               {[
-                { num: '1%', label: '목표 전환율', sub: '10,000명 → 100명 예약' },
-                { num: '4단계', label: '정밀 프로세스', sub: '분석 → 기획 → 제작 → 최적화' },
-                { num: '100%', label: '예약전환 집중', sub: '조회수가 아닌 성과 측정' },
+                { num: '10~100명', label: <span>월 목표 전환율</span>, sub: '조회수 대비 절대값 기준' },
+                { num: '4단계', label: <span>정밀 프로세스</span>, sub: '분석 → 기획 → 제작 → 최적화' },
+                { num: '100%', label: <span>예약 전환 집중 <span style={{ color: '#DC2626' }}>목표</span></span>, sub: '조회수가 아닌 성과 측정' },
               ].map((item, i) => (
                 <div key={i} className="light-card rounded-2xl p-5 text-center">
                   <div className="font-serif font-black text-royal-blue mb-1"
@@ -362,18 +397,70 @@ export default function LogicPage() {
             ))}
           </div>
 
-          <div className={`mt-12 text-center transition-all duration-700 delay-500 ${probVisible ? 'opacity-100' : 'opacity-0'}`}>
-            <p className="font-serif text-navy/55 leading-relaxed" style={{ fontSize: 'clamp(1.1rem, 2.5vw, 1.5rem)' }}>
-              조회수 100만 → 예약 1건 vs{' '}
-              <span className="text-navy font-semibold">조회수 1,000 → 예약 10건</span>
-            </p>
-            <p className="text-navy/35 text-sm mt-2">어떤 콘텐츠가 원장님께 더 나은 콘텐츠일까요?</p>
+          <div className={`mt-14 transition-all duration-700 delay-500 ${probVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+            {/* VS 비교 카드 */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8 max-w-2xl mx-auto">
+              {/* 왼쪽: 바이럴 (나쁜 사례) */}
+              <div className="rounded-2xl border border-red-200 bg-red-50 px-6 py-5 text-center relative overflow-hidden">
+                <div className="absolute top-3 right-3 text-xs font-bold tracking-widest text-red-300 uppercase">Bad</div>
+                <p className="text-red-400 text-xs font-semibold tracking-widest uppercase mb-2">뜨는 밈 &amp; 바이럴</p>
+                <p className="font-serif font-bold text-red-600 leading-tight mb-1" style={{ fontSize: 'clamp(1.2rem, 3vw, 1.7rem)' }}>
+                  조회수 <span style={{ fontSize: '1.3em' }}>100만</span>
+                </p>
+                <div className="flex items-center justify-center gap-2 my-2">
+                  <div className="h-px flex-1 bg-red-200" />
+                  <span className="text-red-300 text-xs">예약전환</span>
+                  <div className="h-px flex-1 bg-red-200" />
+                </div>
+                <p className="font-black text-red-500" style={{ fontSize: '2rem', lineHeight: 1 }}>✕</p>
+              </div>
+
+              {/* 오른쪽: 타겟 (좋은 사례) */}
+              <div className="rounded-2xl border border-royal-blue/20 bg-white shadow-md px-6 py-5 text-center relative overflow-hidden">
+                <div className="absolute top-3 right-3 text-xs font-bold tracking-widest text-royal-blue/40 uppercase">Good</div>
+                <p className="text-royal-blue text-xs font-semibold tracking-widest uppercase mb-2">타겟층 명확한 콘텐츠</p>
+                <p className="font-serif font-bold text-navy leading-tight mb-1" style={{ fontSize: 'clamp(1.2rem, 3vw, 1.7rem)' }}>
+                  조회수 <span style={{ fontSize: '1.3em' }}>1,000</span>
+                </p>
+                <div className="flex items-center justify-center gap-2 my-2">
+                  <div className="h-px flex-1 bg-royal-blue/15" />
+                  <span className="text-royal-blue/50 text-xs">예약전환</span>
+                  <div className="h-px flex-1 bg-royal-blue/15" />
+                </div>
+                <p className="font-black text-royal-blue" style={{ fontSize: '1.8rem', lineHeight: 1 }}>10건</p>
+              </div>
+            </div>
+
+            {/* 설명 문구 */}
+            <div className="max-w-xl mx-auto text-center mb-6 px-2">
+              <p className="text-navy/50 leading-relaxed" style={{ fontSize: 'clamp(0.9rem, 2vw, 1.05rem)', wordBreak: 'keep-all' }}>
+                타겟층이 명확하고, 평균적으로 도달할 수 있는 조회수 <strong className="text-navy/70">1,000회</strong> 중<br />
+                예약 전환이 <strong className="text-navy/70">단 10건</strong>만 된다면,
+              </p>
+            </div>
+
+            {/* 질문 강조 */}
+            <div className="max-w-xl mx-auto text-center mb-8">
+              <p className="font-serif font-bold text-navy" style={{ fontSize: 'clamp(1.15rem, 2.8vw, 1.55rem)', wordBreak: 'keep-all' }}>
+                어떤 콘텐츠가 원장님께 더 나은 콘텐츠일까요?
+              </p>
+            </div>
+
+            {/* 결론 배지 */}
+            <div className="flex justify-center">
+              <div className="inline-flex items-center gap-3 rounded-full border border-royal-blue/20 bg-white shadow-sm px-6 py-3">
+                <span className="w-2 h-2 rounded-full bg-royal-blue animate-pulse" />
+                <p className="font-bold text-navy" style={{ fontSize: 'clamp(0.95rem, 2vw, 1.1rem)' }}>
+                  <span className="text-royal-blue">1%의 힘</span>, 결코 작은 수치가 아닙니다.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* ══ CORE SYSTEM ══════════════════════════════ */}
-      <section className="relative py-32 px-6 overflow-hidden bg-white">
+      <section className="relative pt-20 pb-10 px-6 overflow-hidden bg-white">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] opacity-[0.05] pointer-events-none"
           style={{ background: 'radial-gradient(ellipse, #007AFF 0%, transparent 65%)' }}
         />
@@ -409,7 +496,7 @@ export default function LogicPage() {
                 title: '통합 콘텐츠',
                 tag: '잠재 고객 유입',
                 headline: '대중성을 통해 잠재 고객을 모읍니다',
-                desc: '원장님의 서비스에 관심 있는 잠재 구매자를 유입시키는 단계입니다. 대중성 있는 의료 정보 콘텐츠와 SNS 홍보를 통해 최대한 많은 잠재 고객과 접점을 만듭니다.',
+                desc: '원장님의 서비스에 관심 있는 잠재 구매자를 유입시키는 단계입니다.\n대중성 있는 의료 정보 콘텐츠와 SNS 홍보를 통해\n최대한 많은 잠재 고객과 접점을 만듭니다.',
                 example: '예) "임플란트 비용, 얼마가 적당할까요?" 콘텐츠로 임플란트에 관심 있는 잠재 환자를 채널로 유입',
                 color: '#007AFF',
                 bg: '#F0F7FF',
@@ -419,7 +506,7 @@ export default function LogicPage() {
                 title: '핵심 콘텐츠',
                 tag: '신뢰 구축 · 설득',
                 headline: '전문성으로 잠재 고객을 설득합니다',
-                desc: '유입된 잠재 고객이 "이 병원에 가야겠다"고 결심하게 만드는 단계입니다. 원장님의 전문성과 진료 철학을 깊이 있게 전달해 신뢰를 구축하고 실질적인 예약 의향을 끌어냅니다.',
+                desc: '유입된 잠재 고객이 "이 병원에 가야겠다"고 결심하게 만드는 단계입니다.\n원장님의 전문성과 진료 철학을 깊이 있게 전달해\n신뢰를 구축하고 실질적인 예약 의향을 끌어냅니다.',
                 example: '예) "30년 경력 전문의의 무통 임플란트 시술법" 콘텐츠로 신뢰와 예약 의향을 동시에 달성',
                 color: '#3B88FF',
                 bg: '#FFFFFF',
@@ -429,7 +516,7 @@ export default function LogicPage() {
                 title: '랜딩페이지',
                 tag: '구매 유도 · 행동',
                 headline: '콘텐츠에서 예약 페이지로 직접 연결합니다',
-                desc: '영상을 본 환자가 바로 행동으로 이어지도록 설계하는 단계입니다. 설명란 링크(인포크링크 등)를 통해 상담 신청 페이지, 병원 위치 안내, 이벤트 정보로 자연스럽게 연결합니다.',
+                desc: '영상을 본 환자가 바로 행동으로 이어지도록 설계하는 단계입니다.\n설명란 링크(인포크링크 등)를 통해 상담 신청 페이지, 병원 위치 안내,\n이벤트 정보로 자연스럽게 연결합니다.',
                 example: '예) 영상 설명란 "지금 바로 무료 상담 신청하기 →" 링크로 랜딩페이지 전환',
                 color: '#0057D9',
                 bg: '#F0F7FF',
@@ -439,7 +526,7 @@ export default function LogicPage() {
                 title: '구매전환',
                 tag: '예약 · 내원 · 결제',
                 headline: '잠재 고객이 실제 환자로 전환됩니다',
-                desc: '모든 콘텐츠 전략이 수렴되는 최종 단계입니다. 예약 완료 → 내원 상담 → 최종 결제까지 이어지는 전환 여정을 완성합니다. 이것이 저희가 정의하는 진짜 성공입니다.',
+                desc: '모든 콘텐츠 전략이 수렴되는 최종 단계입니다.\n예약완료 → 내원상담 → 최종결제까지 이어지는 전환 여정을 완성합니다.\n이것이 하이어가 추구하는 예약전환 유튜브 마케팅입니다.',
                 example: '예) 예약 완료 후 내원 상담, 실제 시술 및 결제 완료 — 채널 ROI 달성',
                 color: '#007AFF',
                 bg: '#FFFFFF',
@@ -499,7 +586,7 @@ export default function LogicPage() {
 
                     {/* 설명 */}
                     <p className="text-navy/50 leading-relaxed mb-10"
-                      style={{ fontSize: 'clamp(1rem, 2vw, 1.25rem)', maxWidth: '44rem', lineHeight: 1.85, wordBreak: 'keep-all' }}
+                      style={{ fontSize: 'clamp(1rem, 2vw, 1.25rem)', maxWidth: '44rem', lineHeight: 1.85, wordBreak: 'keep-all', whiteSpace: 'pre-line' }}
                     >
                       {step.desc}
                     </p>
@@ -536,20 +623,11 @@ export default function LogicPage() {
             ))}
           </div>
 
-          {/* 마무리 문구 */}
-          <div className={`mt-20 text-center transition-all duration-700 delay-700 ${coreVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <p className="font-serif text-navy/45 leading-relaxed"
-              style={{ fontSize: 'clamp(1.2rem, 2.8vw, 1.8rem)' }}
-            >
-              이 4단계가 작동할 때,<br />
-              <span className="text-navy font-semibold">조회수 1,000명이 예약 10건이 됩니다.</span>
-            </p>
-          </div>
         </div>
       </section>
 
       {/* ══ 4-STEP PROCESS ══════════════════════════ */}
-      <section className="relative py-28 px-6 overflow-hidden bg-white">
+      <section className="relative pt-10 pb-28 px-6 overflow-hidden bg-white">
         <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-royal-blue/10 to-transparent" />
         <div className="absolute right-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-royal-blue/8 to-transparent" />
 
@@ -941,14 +1019,14 @@ export default function LogicPage() {
                   >
                     {step.label}
                   </span>
-                  <span className="font-serif font-black"
+                  <span className="font-serif font-black whitespace-nowrap"
                     style={{
-                      fontSize: 'clamp(1.4rem, 3vw, 1.9rem)',
+                      fontSize: step.display ? 'clamp(1.3rem, 2.5vw, 1.7rem)' : 'clamp(1.4rem, 3vw, 1.9rem)',
                       color: step.isLast ? '#ffffff' : '#007AFF',
                       lineHeight: 1,
                     }}
                   >
-                    <CountUp to={step.value} duration={1400 + i * 200} active={funnelVisible} />명
+                    {step.display ?? <><CountUp to={step.value} duration={1400 + i * 200} active={funnelVisible} />명</>}
                   </span>
                 </div>
 
@@ -973,6 +1051,15 @@ export default function LogicPage() {
 
           {/* 결과 지표 */}
           <div className={`light-card-blue rounded-2xl p-8 text-center transition-all duration-700 delay-[900ms] ${funnelVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
+            {/* 상단 멘트 */}
+            <div className="mb-6 pb-6 border-b border-royal-blue/10">
+              <p className="font-serif font-bold text-navy" style={{ fontSize: 'clamp(1.1rem, 2.5vw, 1.4rem)', wordBreak: 'keep-all' }}>
+                1%의 힘! 결코 작은 수치가 아닙니다.
+              </p>
+              <p className="text-navy/40 text-sm mt-1">
+                (월 유튜브 유입 전환 환자 절대값 기준 10~100명)
+              </p>
+            </div>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               <div>
                 <div className="font-serif font-black text-royal-blue mb-1"
@@ -1073,6 +1160,8 @@ export default function LogicPage() {
           </div>
         </div>
       </section>
+
+      <PricingSection />
 
       {/* ══ CTA ═════════════════════════════════════ */}
       <section className="relative py-28 px-6 overflow-hidden" style={{ background: '#F0F7FF' }}>

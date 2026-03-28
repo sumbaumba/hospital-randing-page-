@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ko">
+    <html lang="ko" suppressHydrationWarning>
       <head>
         {/* Pretendard Font */}
         <link
@@ -23,6 +23,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           as="style"
           crossOrigin="anonymous"
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css"
+        />
+        {/* Nanum Pen Script — 필기체 */}
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap"
+        />
+        {/* Black Han Sans — 공격적 디스플레이 */}
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap"
         />
       </head>
       <body className="bg-white text-navy font-sans antialiased">{children}</body>

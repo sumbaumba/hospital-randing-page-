@@ -17,6 +17,7 @@ export default function Navbar() {
     { label: '인사이트', href: '#insight' },
     { label: '포트폴리오', href: '#portfolio' },
     { label: '프로세스', href: '/logic' },
+    { label: '플랜', href: '#pricing' },
     { label: '문의', href: '#contact' },
   ]
 
