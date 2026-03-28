@@ -5,8 +5,10 @@ import { useEffect, useState } from 'react'
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
+    setIsMobile(screen.width < 1280)
     const handleScroll = () => setScrolled(window.scrollY > 60)
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
@@ -21,25 +23,32 @@ export default function Navbar() {
     { label: '문의', href: '#contact' },
   ]
 
+  // 모바일(1280px 미만): 0.3 스케일 축소 보정용 대형 사이즈
+  const logo = isMobile
+    ? { width: 320, height: 156, bSize: '1053px 746px', bPos: '-365px -295px' }
+    : { width: 140, height: 68,  bSize: '461px 326px',  bPos: '-160px -129px' }
+
+  const py = isMobile
+    ? (scrolled ? 'py-8' : 'py-12')
+    : (scrolled ? 'py-3' : 'py-5')
+
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
-        ? 'bg-white/95 backdrop-blur-md border-b border-navy/8 py-3 shadow-sm'
-        : 'bg-transparent py-5'
-        }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled
+          ? 'bg-white/95 backdrop-blur-md border-b border-navy/8 shadow-sm'
+          : 'bg-transparent'
+      } ${py}`}
     >
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        {/* 로고: background-image 크롭 방식 (가장 안정적) */}
-        {/* 이미지 3508x2481, 콘텐츠 (1221,982)~(2287,1499)=1066x517 */}
-        {/* 스케일=68/517=0.1315 → backgroundSize:461px 326px, backgroundPosition:-160px -129px */}
         <a href="#" className="flex-shrink-0" aria-label="Higher Production">
           <div style={{
-            width: '140px',
-            height: '68px',
+            width: `${logo.width}px`,
+            height: `${logo.height}px`,
             backgroundImage: 'url(/higher-logo-dark.png)',
-            backgroundSize: '461px 326px',
-            backgroundPosition: '-160px -129px',
+            backgroundSize: logo.bSize,
+            backgroundPosition: logo.bPos,
             backgroundRepeat: 'no-repeat',
           }} />
         </a>
@@ -50,7 +59,9 @@ export default function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              className="text-base font-medium text-navy/55 hover:text-navy transition-colors duration-200"
+              className={`font-medium text-navy/55 hover:text-navy transition-colors duration-200 ${
+                isMobile ? 'text-3xl' : 'text-base'
+              }`}
             >
               {link.label}
             </a>
@@ -61,10 +72,12 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           <a
             href="#contact"
-            className="hidden sm:inline-flex items-center gap-2 bg-royal-blue hover:bg-royal-blue-light text-white text-base font-bold px-6 py-3 rounded-xl transition-all duration-300 hover:scale-[1.03] blue-glow-sm"
+            className={`hidden sm:inline-flex items-center gap-2 bg-royal-blue hover:bg-royal-blue-light text-white font-bold rounded-xl transition-all duration-300 hover:scale-[1.03] blue-glow-sm ${
+              isMobile ? 'text-2xl px-10 py-6' : 'text-base px-6 py-3'
+            }`}
           >
             무료 진단 신청
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <svg width={isMobile ? 24 : 14} height={isMobile ? 24 : 14} viewBox="0 0 14 14" fill="none">
               <path d="M2 7H12M8 3L12 7L8 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </a>
@@ -76,11 +89,11 @@ export default function Navbar() {
             aria-label="메뉴"
           >
             {menuOpen ? (
-              <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <svg width={isMobile ? 56 : 22} height={isMobile ? 56 : 22} viewBox="0 0 22 22" fill="none">
                 <path d="M4 4L18 18M18 4L4 18" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
               </svg>
             ) : (
-              <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <svg width={isMobile ? 56 : 22} height={isMobile ? 56 : 22} viewBox="0 0 22 22" fill="none">
                 <path d="M3 6H19M3 11H19M3 16H19" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
               </svg>
             )}
@@ -90,13 +103,13 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden bg-white border-t border-navy/8 px-6 py-5 shadow-lg">
-          <nav className="flex flex-col gap-4">
+        <div className="md:hidden bg-white border-t border-navy/8 px-6 py-8 shadow-lg">
+          <nav className="flex flex-col gap-6">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-navy/65 hover:text-navy text-lg font-medium py-1 transition-colors"
+                className="text-navy/65 hover:text-navy font-medium py-1 transition-colors text-4xl"
                 onClick={() => setMenuOpen(false)}
               >
                 {link.label}
@@ -104,7 +117,7 @@ export default function Navbar() {
             ))}
             <a
               href="#contact"
-              className="mt-2 bg-royal-blue text-white text-center font-bold px-5 py-4 rounded-xl text-base"
+              className="mt-2 bg-royal-blue text-white text-center font-bold px-8 py-8 rounded-xl text-3xl"
               onClick={() => setMenuOpen(false)}
             >
               무료 채널 진단 신청
