@@ -21,6 +21,7 @@
 html {
   scroll-behavior: smooth;
   min-width: 1280px;
+  transform-origin: top left;
 }
 
 /* Custom scrollbar */
