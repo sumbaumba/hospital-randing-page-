@@ -20,13 +20,7 @@
 
 html {
   scroll-behavior: smooth;
-}
-
-/* 모바일 기본 폰트 크기 향상 */
-@media (max-width: 640px) {
-  body {
-    font-size: 16px;
-  }
+  min-width: 1280px;
 }
 
 /* Custom scrollbar */

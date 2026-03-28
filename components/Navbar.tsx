@@ -5,8 +5,10 @@ import { useEffect, useState } from 'react'
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
+    setIsMobile(screen.width < 1280)
     const handleScroll = () => setScrolled(window.scrollY > 60)
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
@@ -21,9 +23,14 @@ export default function Navbar() {
     { label: '문의', href: '#contact' },
   ]
 
-  const logo = { width: 140, height: 68, bSize: '461px 326px', bPos: '-160px -129px' }
+  // 모바일(1280px 미만): 0.3 스케일 축소 보정용 대형 사이즈
+  const logo = isMobile
+    ? { width: 320, height: 156, bSize: '1053px 746px', bPos: '-365px -295px' }
+    : { width: 140, height: 68,  bSize: '461px 326px',  bPos: '-160px -129px' }
 
-  const py = scrolled ? 'py-3' : 'py-5'
+  const py = isMobile
+    ? (scrolled ? 'py-8' : 'py-12')
+    : (scrolled ? 'py-3' : 'py-5')
 
   return (
     <header
@@ -52,7 +59,9 @@ export default function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              className="font-medium text-navy/55 hover:text-navy transition-colors duration-200 text-base"
+              className={`font-medium text-navy/55 hover:text-navy transition-colors duration-200 ${
+                isMobile ? 'text-3xl' : 'text-base'
+              }`}
             >
               {link.label}
             </a>
@@ -63,10 +72,12 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           <a
             href="#contact"
-            className="hidden sm:inline-flex items-center gap-2 bg-royal-blue hover:bg-royal-blue-light text-white font-bold rounded-xl transition-all duration-300 hover:scale-[1.03] blue-glow-sm text-base px-6 py-3"
+            className={`hidden sm:inline-flex items-center gap-2 bg-royal-blue hover:bg-royal-blue-light text-white font-bold rounded-xl transition-all duration-300 hover:scale-[1.03] blue-glow-sm ${
+              isMobile ? 'text-2xl px-10 py-6' : 'text-base px-6 py-3'
+            }`}
           >
             무료 진단 신청
-            <svg width={14} height={14} viewBox="0 0 14 14" fill="none">
+            <svg width={isMobile ? 24 : 14} height={isMobile ? 24 : 14} viewBox="0 0 14 14" fill="none">
               <path d="M2 7H12M8 3L12 7L8 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </a>
@@ -78,11 +89,11 @@ export default function Navbar() {
             aria-label="메뉴"
           >
             {menuOpen ? (
-              <svg width={24} height={24} viewBox="0 0 22 22" fill="none">
+              <svg width={isMobile ? 56 : 22} height={isMobile ? 56 : 22} viewBox="0 0 22 22" fill="none">
                 <path d="M4 4L18 18M18 4L4 18" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
               </svg>
             ) : (
-              <svg width={24} height={24} viewBox="0 0 22 22" fill="none">
+              <svg width={isMobile ? 56 : 22} height={isMobile ? 56 : 22} viewBox="0 0 22 22" fill="none">
                 <path d="M3 6H19M3 11H19M3 16H19" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
               </svg>
             )}
@@ -98,7 +109,7 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-navy/65 hover:text-navy font-medium py-2 transition-colors text-xl"
+                className="text-navy/65 hover:text-navy font-medium py-1 transition-colors text-4xl"
                 onClick={() => setMenuOpen(false)}
               >
                 {link.label}
@@ -106,7 +117,7 @@ export default function Navbar() {
             ))}
             <a
               href="#contact"
-              className="mt-2 bg-royal-blue text-white text-center font-bold px-6 py-4 rounded-xl text-lg"
+              className="mt-2 bg-royal-blue text-white text-center font-bold px-8 py-8 rounded-xl text-3xl"
               onClick={() => setMenuOpen(false)}
             >
               무료 채널 진단 신청
