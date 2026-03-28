@@ -1,9 +1,5 @@
-import type { Metadata, Viewport } from 'next'
+import type { Metadata } from 'next'
 import './globals.css'
-
-export const viewport: Viewport = {
-  width: 1280,
-}
 
 export const metadata: Metadata = {
   title: '조회수가 아닌, 예약전환을 만듭니다 | 병원 유튜브 마케팅',
@@ -21,6 +17,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ko" suppressHydrationWarning>
       <head>
+        {/*
+          렌더링 전에 실행: 기기 화면 너비를 측정해 1280px 레이아웃이
+          화면에 꼭 맞게 initial-scale을 계산하여 viewport meta를 직접 생성
+        */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var w=screen.width;if(w>=1280){var m=document.createElement('meta');m.name='viewport';m.content='width=device-width,initial-scale=1';document.head.insertBefore(m,document.head.firstChild);return;}var s=(w/1280).toFixed(6);var m=document.createElement('meta');m.name='viewport';m.content='width=1280,initial-scale='+s+',minimum-scale=0.1,maximum-scale=10';document.head.insertBefore(m,document.head.firstChild);})();`,
+          }}
+        />
+        <noscript>
+          <meta name="viewport" content="width=1280" />
+        </noscript>
         {/* Pretendard Font */}
         <link
           rel="stylesheet"
