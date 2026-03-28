@@ -70,20 +70,20 @@ export default function Hero() {
       />
 
       {/* ── Main Content ── */}
-      <div className="relative z-10 text-center max-w-5xl mx-auto px-6 pt-24">
+      <div className="relative z-10 text-center max-w-5xl mx-auto px-5 pt-20 sm:pt-24">
 
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 border border-royal-blue/50 bg-royal-blue/12 rounded-full px-5 py-2 mb-10 animate-fade-in">
+        <div className="inline-flex items-center gap-2 border border-royal-blue/50 bg-royal-blue/12 rounded-full px-4 py-1.5 mb-6 sm:mb-10 animate-fade-in">
           <span className="w-1.5 h-1.5 rounded-full bg-royal-blue animate-pulse" />
-          <span className="text-royal-blue text-xs font-bold tracking-[0.25em] uppercase">
+          <span className="text-royal-blue text-xs font-bold tracking-[0.15em] sm:tracking-[0.25em] uppercase">
             Hospital YouTube Marketing
           </span>
         </div>
 
         {/* Main headline — 압도적으로 크게 */}
         <h1
-          className="font-serif font-black text-navy leading-[1.05] mb-8"
-          style={{ fontSize: 'clamp(3.5rem, 10vw, 8rem)' }}
+          className="font-serif font-black text-navy leading-[1.05] mb-5 sm:mb-8"
+          style={{ fontSize: 'clamp(2.8rem, 10vw, 8rem)' }}
         >
           <span className="block mb-1">조회수가 아닌,</span>
           <span className="block gradient-text">예약전환을</span>
@@ -91,16 +91,16 @@ export default function Hero() {
         </h1>
 
         {/* Divider */}
-        <div className="flex items-center justify-center gap-4 my-8">
-          <div className="h-px w-20 bg-gradient-to-r from-transparent to-royal-blue/70" />
+        <div className="flex items-center justify-center gap-4 my-5 sm:my-8">
+          <div className="h-px w-16 sm:w-20 bg-gradient-to-r from-transparent to-royal-blue/70" />
           <div className="w-2 h-2 rounded-full bg-royal-blue" />
-          <div className="h-px w-20 bg-gradient-to-l from-transparent to-royal-blue/70" />
+          <div className="h-px w-16 sm:w-20 bg-gradient-to-l from-transparent to-royal-blue/70" />
         </div>
 
         {/* Sub copy */}
         <p
-          className="text-navy/75 leading-relaxed max-w-xl mx-auto mb-12"
-          style={{ fontSize: 'clamp(1.2rem, 2.5vw, 1.5rem)' }}
+          className="text-navy/75 leading-relaxed max-w-xl mx-auto mb-8 sm:mb-12"
+          style={{ fontSize: 'clamp(1rem, 2.5vw, 1.5rem)' }}
         >
           영상의 화려함보다 중요한 것은<br />
           환자의 마음을 움직이는&nbsp;
@@ -108,19 +108,19 @@ export default function Hero() {
         </p>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full">
           <a
             href="#contact"
-            className="group flex items-center gap-3 bg-royal-blue hover:bg-royal-blue-light text-white font-bold px-10 py-5 rounded-xl transition-all duration-300 hover:scale-[1.04] blue-glow"
-            style={{ fontSize: '1.1rem' }}
+            className="group w-full sm:w-auto flex items-center justify-center gap-3 bg-royal-blue hover:bg-royal-blue-light text-white font-bold px-7 py-4 sm:px-10 sm:py-5 rounded-xl transition-all duration-300 hover:scale-[1.04] blue-glow"
+            style={{ fontSize: '1rem' }}
           >
             무료 채널 정밀 진단 신청
-            <span className="group-hover:translate-x-1 transition-transform duration-200 text-xl">→</span>
+            <span className="group-hover:translate-x-1 transition-transform duration-200 text-lg">→</span>
           </a>
           <a
             href="#portfolio"
-            className="flex items-center gap-2 border-2 border-navy/15 hover:border-royal-blue/50 text-navy/60 hover:text-royal-blue px-10 py-5 rounded-xl transition-all duration-300"
-            style={{ fontSize: '1.1rem' }}
+            className="w-full sm:w-auto flex items-center justify-center gap-2 border-2 border-navy/15 hover:border-royal-blue/50 text-navy/60 hover:text-royal-blue px-7 py-4 sm:px-10 sm:py-5 rounded-xl transition-all duration-300"
+            style={{ fontSize: '1rem' }}
           >
             포트폴리오 보기
           </a>

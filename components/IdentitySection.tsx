@@ -48,7 +48,7 @@ export default function IdentitySection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="relative bg-white py-32 overflow-hidden">
+    <section ref={sectionRef} className="relative bg-white py-16 md:py-32 overflow-hidden">
       {/* Ambient glow */}
       <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] opacity-[0.08] pointer-events-none"
@@ -57,14 +57,14 @@ export default function IdentitySection() {
 
       <div className="max-w-5xl mx-auto px-6">
         {/* Central quote */}
-        <div className="reveal-scale text-center mb-20">
-          <div className="inline-flex items-center gap-2 mb-8">
+        <div className="reveal-scale text-center mb-12 md:mb-20">
+          <div className="inline-flex items-center gap-2 mb-6 md:mb-8">
             <div className="h-px w-8 bg-royal-blue/50" />
             <span className="text-royal-blue text-xs font-bold tracking-[0.3em] uppercase">Our Identity</span>
             <div className="h-px w-8 bg-royal-blue/50" />
           </div>
 
-          <h2 className="font-serif font-bold text-navy mb-12" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)' }}>
+          <h2 className="font-serif font-bold text-navy mb-8 md:mb-12" style={{ fontSize: 'clamp(2rem, 5vw, 4rem)' }}>
             우리의 약속
           </h2>
 
@@ -95,18 +95,18 @@ export default function IdentitySection() {
             </p>
           </div>
 
-          <p className="mt-12 text-navy/40 max-w-xl mx-auto leading-relaxed" style={{ fontSize: '1.1rem' }}>
+          <p className="mt-7 md:mt-12 text-navy/40 max-w-xl mx-auto leading-relaxed" style={{ fontSize: '1rem' }}>
             잡다한 대행이 아닌, 결과로 증명하는{' '}
             <span className="text-navy/65 font-medium">단 하나의 파트너</span>가 되겠습니다.
           </p>
         </div>
 
         {/* Promise cards */}
-        <div className="reveal-stagger grid grid-cols-1 md:grid-cols-3 gap-5 mb-16">
+        <div className="reveal-stagger grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 mb-10 md:mb-16">
           {promises.map((p) => (
             <div
               key={p.title}
-              className="group relative light-card-blue rounded-2xl p-8 border border-royal-blue/15 hover:border-royal-blue/40 transition-all duration-300 hover:-translate-y-1 text-center"
+              className="group relative light-card-blue rounded-2xl p-6 md:p-8 border border-royal-blue/15 hover:border-royal-blue/40 transition-all duration-300 hover:-translate-y-1 text-center"
             >
               <div className="w-14 h-14 rounded-xl bg-royal-blue/10 group-hover:bg-royal-blue/20 border border-royal-blue/20 flex items-center justify-center mx-auto mb-6 transition-colors duration-300">
                 <svg className="text-royal-blue" width="22" height="22" viewBox="0 0 24 24" fill="none">
@@ -121,20 +121,20 @@ export default function IdentitySection() {
 
         {/* Final CTA strip */}
         <div className="reveal">
-          <div className="rounded-2xl border border-glow-animate border-royal-blue/25 bg-gradient-to-br from-ice-blue to-white p-12 text-center shadow-lg">
-            <p className="font-serif text-navy/60 text-xl mb-3">
+          <div className="rounded-2xl border border-glow-animate border-royal-blue/25 bg-gradient-to-br from-ice-blue to-white p-7 md:p-12 text-center shadow-lg">
+            <p className="font-serif text-navy/60 text-base md:text-xl mb-2 md:mb-3">
               한 편의 의학 다큐멘터리처럼,
             </p>
-            <p className="font-serif font-bold text-navy mb-10" style={{ fontSize: 'clamp(1.4rem, 3vw, 2.2rem)' }}>
+            <p className="font-serif font-bold text-navy mb-7 md:mb-10" style={{ fontSize: 'clamp(1.2rem, 3vw, 2.2rem)', wordBreak: 'keep-all' }}>
               정갈하고 품격 있게 원장님의 이야기를 만들겠습니다.
             </p>
             <a
               href="#contact"
-              className="inline-flex items-center gap-3 bg-royal-blue hover:bg-royal-blue-light text-white font-bold px-12 py-5 rounded-xl transition-all duration-300 hover:scale-[1.04] blue-glow"
-              style={{ fontSize: '1.1rem' }}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-royal-blue hover:bg-royal-blue-light text-white font-bold px-8 py-4 sm:px-12 sm:py-5 rounded-xl transition-all duration-300 hover:scale-[1.04] blue-glow"
+              style={{ fontSize: '1rem' }}
             >
               무료 채널 정밀 진단 신청하기
-              <span className="text-xl">→</span>
+              <span className="text-lg">→</span>
             </a>
           </div>
         </div>

@@ -1,5 +1,10 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import './globals.css'
+
+export const viewport: Viewport = {
+  width: 1280,
+  initialScale: 1,
+}
 
 export const metadata: Metadata = {
   title: '조회수가 아닌, 예약전환을 만듭니다 | 병원 유튜브 마케팅',

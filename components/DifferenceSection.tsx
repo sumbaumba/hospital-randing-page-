@@ -59,14 +59,14 @@ export default function DifferenceSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="relative bg-white py-32 overflow-hidden">
+    <section ref={sectionRef} className="relative bg-white py-16 md:py-32 overflow-hidden">
       {/* Decorative lines */}
       <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-royal-blue/15 to-transparent" />
       <div className="absolute right-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-royal-blue/10 to-transparent" />
 
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-start mb-12 md:mb-20">
           <div>
             <div className="reveal flex items-center gap-3 mb-6">
               <div className="section-divider" />
@@ -85,16 +85,16 @@ export default function DifferenceSection() {
 
           {/* Quote card */}
           <div className="reveal-right">
-            <div className="light-card-blue border-glow-animate rounded-2xl p-9 relative overflow-hidden">
+            <div className="light-card-blue border-glow-animate rounded-2xl p-6 md:p-9 relative overflow-hidden">
               <div
                 className="absolute top-0 right-0 w-32 h-32 opacity-15 pointer-events-none"
                 style={{ background: 'radial-gradient(circle, #007AFF 0%, transparent 70%)' }}
               />
-              {/* Higher Production logo — absolute top-right, no background */}
+              {/* Higher Production logo — desktop only (overflow on mobile) */}
               <img
                 src="/higher-logo-dark.png"
                 alt="Higher Production"
-                className="absolute bottom-0 right-0 w-full object-contain pointer-events-none"
+                className="absolute bottom-0 right-0 w-full object-contain pointer-events-none hidden md:block"
                 style={{ opacity: 0.55, transform: 'translateX(4cm)' }}
               />
               <div className="text-royal-blue/20 font-serif text-8xl font-black leading-none mb-2 select-none">&ldquo;</div>
@@ -111,11 +111,11 @@ export default function DifferenceSection() {
         </div>
 
         {/* Feature grid */}
-        <div className="reveal-stagger grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className="reveal-stagger grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
           {features.map((feat) => (
             <div
               key={feat.num}
-              className="group light-card rounded-2xl p-8 hover:border-royal-blue/30 transition-all duration-300 hover:-translate-y-1"
+              className="group light-card rounded-2xl p-5 md:p-8 hover:border-royal-blue/30 transition-all duration-300 hover:-translate-y-1"
             >
               <div className="flex items-start gap-5">
                 {/* Icon */}

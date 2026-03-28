@@ -45,7 +45,7 @@ export default function StorySection() {
   }, [])
 
   return (
-    <section id="story" ref={sectionRef} className="relative bg-ice-blue py-32 overflow-hidden">
+    <section id="story" ref={sectionRef} className="relative bg-ice-blue py-16 md:py-32 overflow-hidden">
       <div
         className="absolute top-0 right-0 w-[500px] h-[500px] opacity-[0.08] pointer-events-none"
         style={{ background: 'radial-gradient(circle, #007AFF 0%, transparent 70%)' }}
@@ -53,7 +53,7 @@ export default function StorySection() {
 
       <div className="max-w-6xl mx-auto px-6">
         {/* Label + Title */}
-        <div className="reveal text-center mb-16">
+        <div className="reveal text-center mb-10 md:mb-16">
           <div className="inline-flex items-center gap-3 mb-8">
             <div className="h-px w-10 bg-royal-blue/50" />
             <span className="text-royal-blue text-xs font-bold tracking-[0.3em] uppercase">
@@ -69,15 +69,13 @@ export default function StorySection() {
           </h2>
         </div>
 
-        {/* Horizontal 3-column cards with arrow connectors */}
-        <div className="reveal-stagger grid items-stretch gap-0"
-          style={{ gridTemplateColumns: '1fr auto 1fr auto 1fr' }}
-        >
+        {/* 3-column cards with arrow connectors (mobile: stacked, desktop: horizontal) */}
+        <div className="reveal-stagger grid grid-cols-1 gap-5 story-grid">
           {steps.map((s, i) => (
             <Fragment key={s.title}>
               {/* Card */}
               <div
-                className={`rounded-3xl text-center flex flex-col items-center justify-start transition-all duration-300 hover:-translate-y-1 px-8 py-12 ${
+                className={`rounded-3xl text-center flex flex-col items-center justify-start transition-all duration-300 hover:-translate-y-1 px-6 py-8 md:px-8 md:py-12 ${
                   s.style === 'red'
                     ? 'bg-red-50 border border-red-200'
                     : s.style === 'blue'
@@ -119,9 +117,9 @@ export default function StorySection() {
                 </p>
               </div>
 
-              {/* Arrow connector — between cards only */}
+              {/* Arrow connector — between cards only (hidden on mobile) */}
               {i < steps.length - 1 && (
-                <div className="flex items-center justify-center px-3">
+                <div className="hidden md:flex items-center justify-center px-3">
                   <div className="flex flex-col items-center gap-1.5">
                     <div className="w-8 h-px bg-navy/35" />
                     <svg width="12" height="16" viewBox="0 0 12 16" fill="none" className="text-navy/50">
@@ -136,8 +134,8 @@ export default function StorySection() {
         </div>
 
         {/* ── 하단 핵심 문구 — 세련되고 크게 ── */}
-        <div className="reveal mt-16">
-          <div className="rounded-3xl bg-white border border-royal-blue/15 shadow-md px-10 py-12 text-center relative overflow-hidden">
+        <div className="reveal mt-10 md:mt-16">
+          <div className="rounded-3xl bg-white border border-royal-blue/15 shadow-md px-6 py-8 md:px-10 md:py-12 text-center relative overflow-hidden">
             {/* 배경 블루 글로우 */}
             <div
               className="absolute inset-0 opacity-[0.04] pointer-events-none"

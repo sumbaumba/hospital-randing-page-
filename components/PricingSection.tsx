@@ -67,7 +67,7 @@ export default function PricingSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} id="pricing" className="relative py-28 px-6 overflow-hidden bg-white">
+    <section ref={sectionRef} id="pricing" className="relative py-16 md:py-28 px-6 overflow-hidden bg-white">
       {/* 배경 장식 */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] opacity-[0.04] pointer-events-none"
@@ -76,7 +76,7 @@ export default function PricingSection() {
 
       <div className="max-w-5xl mx-auto">
         {/* 헤더 */}
-        <div className="reveal text-center mb-16">
+        <div className="reveal text-center mb-10 md:mb-16">
           <div className="inline-flex items-center gap-3 mb-6">
             <div className="h-px w-10 bg-royal-blue/40" />
             <span className="text-royal-blue text-xs font-bold tracking-[0.3em] uppercase">Pricing Plan</span>
@@ -95,7 +95,7 @@ export default function PricingSection() {
         </div>
 
         {/* 플랜 카드 2개 */}
-        <div className="reveal-stagger grid grid-cols-1 sm:grid-cols-2 gap-5 mb-10 max-w-3xl mx-auto">
+        <div className="reveal-stagger grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5 mb-8 md:mb-10 max-w-3xl mx-auto">
           {/* 베이직 */}
           <div className="rounded-2xl p-7 flex flex-col relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #F8FAFF 0%, #EEF4FF 100%)', border: '1.5px solid rgba(10,25,47,0.1)' }}>
             {/* 상단 네이비 라인 */}
@@ -168,9 +168,10 @@ export default function PricingSection() {
           className="overflow-hidden transition-all duration-500"
           style={{ maxHeight: tableOpen ? '2000px' : '0px', opacity: tableOpen ? 1 : 0 }}
         >
-        <div className="reveal overflow-hidden rounded-2xl border border-navy/10 shadow-md mt-2">
+        <div className="reveal rounded-2xl border border-navy/10 shadow-md mt-2 overflow-x-auto">
+          <div className="min-w-[520px]">
           {/* 표 헤더 */}
-          <div className="grid grid-cols-[1fr_200px_200px]" style={{ background: '#F4F8FF' }}>
+          <div className="grid grid-cols-[1fr_160px_160px] md:grid-cols-[1fr_200px_200px]" style={{ background: '#F4F8FF' }}>
             <div className="px-8 py-6 text-navy/40 text-sm font-bold uppercase tracking-widest flex items-center">항목</div>
             <div className="px-6 py-6 text-center border-l border-navy/8 flex flex-col items-center justify-center gap-1">
               <span className="text-navy/35 text-xs font-bold tracking-widest uppercase">Basic</span>
@@ -186,8 +187,8 @@ export default function PricingSection() {
           {features.map((row, idx) => {
             if ('category' in row) {
               return (
-                <div key={idx} className="grid grid-cols-[1fr_200px_200px] border-t-2 border-navy/8" style={{ background: '#F0F4FA' }}>
-                  <div className="col-span-3 px-8 py-3">
+                <div key={idx} className="grid grid-cols-[1fr_160px_160px] md:grid-cols-[1fr_200px_200px] border-t-2 border-navy/8" style={{ background: '#F0F4FA' }}>
+                  <div className="col-span-3 px-5 md:px-8 py-3">
                     <span className="text-navy/60 text-sm font-black tracking-[0.2em] uppercase">{row.category}</span>
                   </div>
                 </div>
@@ -198,26 +199,27 @@ export default function PricingSection() {
             return (
               <div
                 key={idx}
-                className={`grid grid-cols-[1fr_200px_200px] border-t border-navy/6 ${isEven ? 'bg-white' : 'bg-navy/[0.015]'}`}
+                className={`grid grid-cols-[1fr_160px_160px] md:grid-cols-[1fr_200px_200px] border-t border-navy/6 ${isEven ? 'bg-white' : 'bg-navy/[0.015]'}`}
               >
-                <div className="px-8 py-5 flex items-center">
+                <div className="px-5 md:px-8 py-4 md:py-5 flex items-center">
                   <span className="text-navy/75 text-base font-medium" style={{ wordBreak: 'keep-all' }}>{row.label}</span>
                 </div>
-                <div className="px-6 py-5 flex items-center justify-center border-l border-navy/6">
+                <div className="px-3 md:px-6 py-4 md:py-5 flex items-center justify-center border-l border-navy/6">
                   {row.type === 'bool'
                     ? (row.basic ? <Check /> : <Dash />)
-                    : <span className="text-navy/65 text-sm text-center leading-relaxed whitespace-pre-line font-medium">{String(row.basic)}</span>
+                    : <span className="text-navy/65 text-xs md:text-sm text-center leading-relaxed whitespace-pre-line font-medium">{String(row.basic)}</span>
                   }
                 </div>
-                <div className="px-6 py-5 flex items-center justify-center border-l border-royal-blue/10" style={{ background: isEven ? 'rgba(0,122,255,0.03)' : 'rgba(0,122,255,0.05)' }}>
+                <div className="px-3 md:px-6 py-4 md:py-5 flex items-center justify-center border-l border-royal-blue/10" style={{ background: isEven ? 'rgba(0,122,255,0.03)' : 'rgba(0,122,255,0.05)' }}>
                   {row.type === 'bool'
                     ? (row.premium ? <Check /> : <Dash />)
-                    : <span className="text-royal-blue text-sm text-center leading-relaxed font-semibold whitespace-pre-line">{String(row.premium)}</span>
+                    : <span className="text-royal-blue text-xs md:text-sm text-center leading-relaxed font-semibold whitespace-pre-line">{String(row.premium)}</span>
                   }
                 </div>
               </div>
             )
           })}
+          </div>{/* min-w 래퍼 닫힘 */}
         </div>
         </div>{/* 토글 래퍼 닫힘 */}
 

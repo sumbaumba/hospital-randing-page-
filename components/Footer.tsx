@@ -2,14 +2,14 @@ export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="relative bg-navy border-t border-white/5 py-14 overflow-hidden">
+    <footer className="relative bg-navy border-t border-white/5 py-10 md:py-14 overflow-hidden">
       <div
         className="absolute bottom-0 left-1/2 -translate-x-1/2 w-96 h-32 opacity-[0.04] pointer-events-none"
         style={{ background: 'radial-gradient(ellipse, #007AFF 0%, transparent 70%)' }}
       />
 
       <div className="max-w-6xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 mb-8 md:mb-12">
           {/* Brand */}
           <div>
             {/* 로고: 이미지 3508x2481, 콘텐츠 (1221,982)~(2287,1499)=1066x517 */}

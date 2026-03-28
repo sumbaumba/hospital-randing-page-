@@ -24,23 +24,23 @@ export default function ProblemSection() {
   }, [])
 
   return (
-    <section id="insight" ref={sectionRef} className="relative bg-white pt-32 pb-4 overflow-hidden">
+    <section id="insight" ref={sectionRef} className="relative bg-white pt-16 pb-4 md:pt-32 overflow-hidden">
       {/* Subtle top border accent */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-navy/10 to-transparent" />
 
       <div className="max-w-6xl mx-auto px-6">
 
         {/* ── Opening impact statement ── */}
-        <div className="reveal text-center mb-24">
+        <div className="reveal text-center mb-12 md:mb-24">
           <p
             className="font-serif font-black text-navy leading-[1.1] mb-2"
-            style={{ fontSize: 'clamp(2.8rem, 6.5vw, 5.2rem)' }}
+            style={{ fontSize: 'clamp(2rem, 6.5vw, 5.2rem)' }}
           >
             조회수가 중요하지 않습니다.
           </p>
           <p
-            className="font-serif font-black text-royal-blue leading-[1.1] mb-12"
-            style={{ fontSize: 'clamp(2.8rem, 6.5vw, 5.2rem)' }}
+            className="font-serif font-black text-royal-blue leading-[1.1] mb-10 md:mb-12"
+            style={{ fontSize: 'clamp(2rem, 6.5vw, 5.2rem)' }}
           >
             본질을 이해해야 합니다.
           </p>
@@ -54,13 +54,13 @@ export default function ProblemSection() {
         </div>
 
         {/* ── WHY VIEWS DON'T MATTER ─────────────────────── */}
-        <div className="reveal mb-28">
+        <div className="reveal mb-14 md:mb-28">
 
           {/* Editorial question */}
-          <div className="text-center mb-16">
+          <div className="text-center mb-10 md:mb-16">
             <h3
               className="font-serif font-bold text-navy mb-6"
-              style={{ fontSize: 'clamp(2rem, 4.5vw, 3.5rem)', lineHeight: 1.2, wordBreak: 'keep-all' }}
+              style={{ fontSize: 'clamp(1.6rem, 4.5vw, 3.5rem)', lineHeight: 1.2, wordBreak: 'keep-all' }}
             >
               조회수가 왜 중요하지 않을까요?
             </h3>
@@ -71,10 +71,10 @@ export default function ProblemSection() {
           </div>
 
           {/* Two method cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto mb-12 md:mb-16">
 
             {/* Method 01 */}
-            <div className="relative rounded-3xl border border-red-200/70 bg-red-50/50 p-10 md:p-12 overflow-hidden">
+            <div className="relative rounded-3xl border border-red-200/70 bg-red-50/50 p-7 md:p-12 overflow-hidden">
               <div className="absolute -top-6 -right-3 font-serif font-black text-red-100/80 select-none pointer-events-none" style={{ fontSize: '9rem', lineHeight: 1 }}>01</div>
               <div className="relative z-10">
                 <div className="inline-flex items-center gap-2 mb-7 px-4 py-2.5 rounded-2xl bg-red-500 shadow-sm">
@@ -118,7 +118,7 @@ export default function ProblemSection() {
             </div>
 
             {/* Method 02 */}
-            <div className="relative rounded-3xl border border-red-200/70 bg-red-50/50 p-10 md:p-12 overflow-hidden">
+            <div className="relative rounded-3xl border border-red-200/70 bg-red-50/50 p-7 md:p-12 overflow-hidden">
               <div className="absolute -top-6 -right-3 font-serif font-black text-red-100/80 select-none pointer-events-none" style={{ fontSize: '9rem', lineHeight: 1 }}>02</div>
               <div className="relative z-10">
                 <div className="inline-flex items-center gap-2 mb-7 px-4 py-2.5 rounded-2xl bg-red-500 shadow-sm">
@@ -173,7 +173,7 @@ export default function ProblemSection() {
 
           {/* Transition CTA */}
           <div
-            className="relative rounded-3xl overflow-hidden p-10 md:p-14 text-center"
+            className="relative rounded-3xl overflow-hidden p-7 md:p-14 text-center"
             style={{ background: 'linear-gradient(135deg, #F0F7FF 0%, #E3EEFF 100%)', border: '1px solid rgba(0,122,255,0.12)' }}
           >
             <div className="absolute inset-0 opacity-[0.05] pointer-events-none" style={{ background: 'radial-gradient(ellipse at 50% 120%, #007AFF 0%, transparent 65%)' }} />
@@ -203,7 +203,7 @@ export default function ProblemSection() {
         </div>
 
         {/* ── QUESTION BRIDGE ──────────────────────────── */}
-        <div className="reveal py-20">
+        <div className="reveal py-10 md:py-20">
           <div
             className="relative rounded-3xl overflow-hidden mx-auto"
             style={{ maxWidth: '820px', background: '#FFFFFF', border: '1px solid rgba(0,122,255,0.10)', boxShadow: '0 8px 48px rgba(0,122,255,0.07)' }}
@@ -211,7 +211,7 @@ export default function ProblemSection() {
             {/* Subtle top accent line */}
             <div className="absolute top-0 left-0 right-0 h-[3px]" style={{ background: 'linear-gradient(90deg, #007AFF 0%, #3B88FF 50%, #007AFF 100%)' }} />
 
-            <div className="px-10 md:px-16 py-14 text-center">
+            <div className="px-5 sm:px-10 md:px-16 py-10 md:py-14 text-center">
               {/* Comparison lines */}
               <div className="space-y-5 mb-10">
                 <p className="text-navy/65 leading-relaxed" style={{ fontSize: 'clamp(1.05rem, 2.2vw, 1.35rem)', wordBreak: 'keep-all' }}>
@@ -251,7 +251,7 @@ export default function ProblemSection() {
         </div>
 
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 md:mb-16">
           <div className="reveal inline-flex items-center gap-2 mb-6">
             <div className="h-px w-8 bg-red-400/60" />
             <span className="text-red-500 text-xs font-bold tracking-[0.3em] uppercase">The Problem</span>
@@ -268,7 +268,7 @@ export default function ProblemSection() {
         {/* Comparison grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {/* Left: The wrong approach */}
-          <div className="reveal-left relative rounded-2xl overflow-hidden border border-red-200 bg-red-50 p-8 flex flex-col">
+          <div className="reveal-left relative rounded-2xl overflow-hidden border border-red-200 bg-red-50 p-6 md:p-8 flex flex-col">
             {/* Decorative X — sharp square corners, thick */}
             <svg className="absolute top-4 right-4 text-red-300" width="38" height="38" viewBox="0 0 38 38" fill="none">
               <line x1="5" y1="5" x2="33" y2="33" stroke="currentColor" strokeWidth="5" strokeLinecap="square" />
@@ -319,7 +319,7 @@ export default function ProblemSection() {
           </div>
 
           {/* Right: The right approach */}
-          <div className="reveal-right relative rounded-2xl overflow-hidden border border-royal-blue/20 light-card-blue p-8 flex flex-col">
+          <div className="reveal-right relative rounded-2xl overflow-hidden border border-royal-blue/20 light-card-blue p-6 md:p-8 flex flex-col">
             {/* Decorative V — thick checkmark */}
             <svg className="absolute top-4 right-4 text-royal-blue/40" width="38" height="38" viewBox="0 0 38 38" fill="none">
               <polyline points="4,20 15,31 34,7" stroke="currentColor" strokeWidth="5" strokeLinecap="square" strokeLinejoin="miter" />

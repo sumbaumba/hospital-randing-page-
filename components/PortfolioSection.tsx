@@ -36,10 +36,10 @@ function PortfolioCard({ item }: { item: typeof portfolioItems[0] }) {
       href={item.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group flex-shrink-0 w-[260px] bg-white rounded-2xl border border-navy/8 overflow-hidden hover:border-royal-blue/30 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+      className="group flex-shrink-0 w-[200px] sm:w-[260px] bg-white rounded-2xl border border-navy/8 overflow-hidden hover:border-royal-blue/30 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
     >
       {/* Thumbnail */}
-      <div className="relative h-[148px] overflow-hidden bg-ice-blue">
+      <div className="relative h-[114px] sm:h-[148px] overflow-hidden bg-ice-blue">
         <img
           src={`https://img.youtube.com/vi/${item.videoId}/mqdefault.jpg`}
           alt={item.name}
@@ -55,7 +55,7 @@ function PortfolioCard({ item }: { item: typeof portfolioItems[0] }) {
       </div>
 
       {/* Content */}
-      <div className="p-4">
+      <div className="p-3 sm:p-4">
         <span className={`inline-block text-xs font-bold px-2.5 py-1 rounded-full mb-2.5 ${categoryColor[item.category] ?? 'bg-ice-blue text-navy/60'}`}>
           {item.category}
         </span>
@@ -88,7 +88,7 @@ export default function PortfolioSection() {
   }, [])
 
   return (
-    <section id="portfolio" ref={sectionRef} className="relative bg-ice-blue py-32 overflow-hidden">
+    <section id="portfolio" ref={sectionRef} className="relative bg-ice-blue py-16 md:py-32 overflow-hidden">
       <div
         className="absolute bottom-0 right-0 w-96 h-96 opacity-[0.08] pointer-events-none"
         style={{ background: 'radial-gradient(circle, #007AFF 0%, transparent 70%)' }}
@@ -96,7 +96,7 @@ export default function PortfolioSection() {
 
       {/* Header */}
       <div className="max-w-6xl mx-auto px-6">
-        <div className={`transition-all duration-700 ${revealed ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} text-center mb-14`}>
+        <div className={`transition-all duration-700 ${revealed ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} text-center mb-8 md:mb-14`}>
           <div className="inline-flex items-center gap-2 mb-6">
             <div className="h-px w-8 bg-royal-blue/50" />
             <span className="text-royal-blue text-xs font-bold tracking-[0.3em] uppercase">Portfolio</span>
@@ -134,7 +134,7 @@ export default function PortfolioSection() {
       </div>
 
       {/* CTA */}
-      <div className={`text-center mt-14 transition-all duration-700 delay-500 ${revealed ? 'opacity-100' : 'opacity-0'}`}>
+      <div className={`text-center mt-8 md:mt-14 transition-all duration-700 delay-500 ${revealed ? 'opacity-100' : 'opacity-0'}`}>
         <a
           href="#contact"
           className="inline-flex items-center gap-2 text-royal-blue hover:text-white border-2 border-royal-blue hover:bg-royal-blue px-8 py-4 rounded-xl font-bold transition-all duration-300"

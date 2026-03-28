@@ -128,7 +128,7 @@ export default function LeadForm() {
   const labelClass = "block text-navy/60 font-semibold mb-2"
 
   return (
-    <section id="contact" ref={sectionRef} className="relative bg-ice-blue py-32 overflow-hidden">
+    <section id="contact" ref={sectionRef} className="relative bg-ice-blue py-16 md:py-32 overflow-hidden">
       {/* Background */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] opacity-[0.10] pointer-events-none"
@@ -138,16 +138,16 @@ export default function LeadForm() {
       <div className="max-w-4xl mx-auto px-6">
         {/* Header */}
         <div
-          className={`text-center mb-14 transition-all duration-700 ${
+          className={`text-center mb-10 md:mb-14 transition-all duration-700 ${
             revealed ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
-          <div className="inline-flex items-center gap-2 mb-6">
+          <div className="inline-flex items-center gap-2 mb-5 md:mb-6">
             <div className="h-px w-8 bg-royal-blue/50" />
             <span className="text-royal-blue text-xs font-bold tracking-[0.3em] uppercase">Free Diagnosis</span>
             <div className="h-px w-8 bg-royal-blue/50" />
           </div>
-          <h2 className="font-serif font-bold text-navy mb-5" style={{ fontSize: 'clamp(2.2rem, 5vw, 3.5rem)' }}>
+          <h2 className="font-serif font-bold text-navy mb-4 md:mb-5" style={{ fontSize: 'clamp(1.8rem, 5vw, 3.5rem)' }}>
             무료 채널 정밀 진단 신청
           </h2>
           <p className="text-navy/50 leading-relaxed max-w-lg mx-auto" style={{ fontSize: '1.15rem' }}>
@@ -163,7 +163,7 @@ export default function LeadForm() {
         >
           {submitted ? (
             /* Success state */
-            <div className="bg-white border border-royal-blue/20 rounded-2xl p-16 text-center shadow-lg">
+            <div className="bg-white border border-royal-blue/20 rounded-2xl p-8 md:p-16 text-center shadow-lg">
               <div className="w-20 h-20 rounded-full bg-royal-blue/10 border-2 border-royal-blue flex items-center justify-center mx-auto mb-7 blue-glow">
                 <svg width="34" height="34" viewBox="0 0 24 24" fill="none" className="text-royal-blue">
                   <path d="M20 6L9 17L4 12" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -178,7 +178,7 @@ export default function LeadForm() {
           ) : (
             <form
               onSubmit={handleSubmit}
-              className="bg-white rounded-2xl border border-navy/8 p-8 md:p-12 space-y-6 shadow-lg"
+              className="bg-white rounded-2xl border border-navy/8 p-5 md:p-12 space-y-5 md:space-y-6 shadow-lg"
             >
               {/* Row 1: Name + Hospital */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -311,7 +311,7 @@ export default function LeadForm() {
               <button
                 type="submit"
                 disabled={loading || !form.privacyAgreed}
-                className={`w-full flex items-center justify-center gap-3 font-bold py-5 rounded-xl transition-all duration-300 text-lg ${
+                className={`w-full flex items-center justify-center gap-3 font-bold py-4 md:py-5 rounded-xl transition-all duration-300 text-base md:text-lg ${
                   loading || !form.privacyAgreed
                     ? 'bg-royal-blue/50 text-white/70 cursor-not-allowed'
                     : 'bg-royal-blue hover:bg-royal-blue-light text-white hover:scale-[1.02] blue-glow'
@@ -338,7 +338,7 @@ export default function LeadForm() {
 
         {/* Contact info strip */}
         <div
-          className={`mt-10 flex flex-col sm:flex-row items-center justify-center gap-6 text-navy/35 transition-all duration-700 delay-400 ${
+          className={`mt-7 md:mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 text-navy/35 transition-all duration-700 delay-400 ${
             revealed ? 'opacity-100' : 'opacity-0'
           }`}
           style={{ fontSize: '1rem' }}
