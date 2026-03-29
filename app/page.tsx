@@ -1,4 +1,5 @@
 import Navbar from '@/components/Navbar'
+import FloatingCTA from '@/components/FloatingCTA'
 import Hero from '@/components/Hero'
 import StorySection from '@/components/StorySection'
 import ProblemSection from '@/components/ProblemSection'
@@ -24,6 +25,7 @@ export default function Home() {
       <PricingSection />
       <LeadForm />
       <Footer />
+      <FloatingCTA />
     </main>
   )
 }

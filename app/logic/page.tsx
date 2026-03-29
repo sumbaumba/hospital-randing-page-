@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import PricingSection from '@/components/PricingSection'
+import FloatingCTA from '@/components/FloatingCTA'
 
 /* ── CountUp ──────────────────────────────────────── */
 function CountUp({ to, duration = 1800, active }: { to: number; duration?: number; active: boolean }) {
@@ -1221,6 +1222,7 @@ export default function LogicPage() {
         <p className="text-white/20 text-xs">© 2026 Higher Production. All rights reserved.</p>
       </footer>
 
+      <FloatingCTA planHref="#pricing" contactHref="/#contact" />
     </main>
   )
 }
