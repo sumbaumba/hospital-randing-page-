@@ -121,8 +121,8 @@ export default function LeadForm() {
     setLoading(true)
     try {
       await emailjs.send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        'service_4v4p0ho',
+        'template_vditzdp',
         {
           name: form.name,
           hospital: form.hospital,
@@ -131,7 +131,7 @@ export default function LeadForm() {
           consultType: form.consultType,
           message: form.message || '(내용 없음)',
         },
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+        'zOUbWREObhSPvZDah'
       )
       setLoading(false)
       setSubmitted(true)
@@ -256,7 +256,7 @@ export default function LeadForm() {
                     name="channelUrl"
                     value={form.channelUrl}
                     onChange={handleChange}
-                    placeholder="https://youtube.com/@... (없으면 '없음' 입력)"
+                    placeholder="https://youtube.com/@..."
                     className={inputClass}
                   />
                 </div>
