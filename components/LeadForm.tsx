@@ -252,11 +252,11 @@ export default function LeadForm() {
                     <span className="text-navy/35 text-sm font-normal">(선택)</span>
                   </label>
                   <input
-                    type="url"
+                    type="text"
                     name="channelUrl"
                     value={form.channelUrl}
                     onChange={handleChange}
-                    placeholder="https://youtube.com/@..."
+                    placeholder="https://youtube.com/@... (없으면 '없음' 입력)"
                     className={inputClass}
                   />
                 </div>
