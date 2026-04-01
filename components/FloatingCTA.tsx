@@ -1,5 +1,7 @@
 'use client'
 
+import { useEffect, useState } from 'react'
+
 export default function FloatingCTA({
   planHref = '#pricing',
   contactHref = '#contact',
@@ -7,6 +9,63 @@ export default function FloatingCTA({
   planHref?: string
   contactHref?: string
 }) {
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    setIsMobile(screen.width < 1280)
+  }, [])
+
+  if (isMobile) {
+    return (
+      <div
+        className="fixed z-40 flex items-center"
+        style={{
+          bottom: '60px',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          background: 'rgba(255,255,255,0.95)',
+          backdropFilter: 'blur(20px)',
+          border: '2px solid rgba(10,25,47,0.10)',
+          borderRadius: '999px',
+          padding: '28px 36px',
+          boxShadow: '0 12px 60px rgba(0,0,0,0.15), 0 4px 20px rgba(0,122,255,0.12)',
+          whiteSpace: 'nowrap',
+          gap: '24px',
+        }}
+      >
+        {/* 플랜 보러가기 */}
+        <a
+          href={planHref}
+          className="flex items-center text-navy font-semibold hover:text-royal-blue transition-colors duration-200"
+          style={{ fontSize: '3.2rem', gap: '16px' }}
+        >
+          <svg width="52" height="52" viewBox="0 0 16 16" fill="none">
+            <rect x="1" y="1" width="6" height="6" rx="1.5" stroke="currentColor" strokeWidth="1.5"/>
+            <rect x="9" y="1" width="6" height="6" rx="1.5" stroke="currentColor" strokeWidth="1.5"/>
+            <rect x="1" y="9" width="6" height="6" rx="1.5" stroke="currentColor" strokeWidth="1.5"/>
+            <rect x="9" y="9" width="6" height="6" rx="1.5" stroke="currentColor" strokeWidth="1.5"/>
+          </svg>
+          플랜 보러가기
+        </a>
+
+        {/* 구분선 */}
+        <div style={{ width: '3px', height: '72px', background: 'rgba(10,25,47,0.12)' }} />
+
+        {/* 무료 진단 신청 */}
+        <a
+          href={contactHref}
+          className="flex items-center bg-royal-blue hover:bg-royal-blue-light text-white font-bold transition-all duration-200 blue-glow-sm"
+          style={{ fontSize: '3.2rem', padding: '28px 52px', borderRadius: '999px', gap: '16px' }}
+        >
+          무료 진단 신청
+          <svg width="48" height="48" viewBox="0 0 14 14" fill="none">
+            <path d="M2 7H12M8 3L12 7L8 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    )
+  }
+
   return (
     <div
       className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 flex items-center gap-3"
