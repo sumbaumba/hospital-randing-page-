@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import emailjs from '@emailjs/browser'
 
 type FormData = {
   name: string
@@ -118,10 +119,27 @@ export default function LeadForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
-    // Simulate async submission (replace with actual API call)
-    await new Promise((res) => setTimeout(res, 1500))
-    setLoading(false)
-    setSubmitted(true)
+    try {
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        {
+          name: form.name,
+          hospital: form.hospital,
+          phone: form.phone,
+          channelUrl: form.channelUrl || '(입력 안함)',
+          consultType: form.consultType,
+          message: form.message || '(내용 없음)',
+        },
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+      )
+      setLoading(false)
+      setSubmitted(true)
+    } catch (err) {
+      setLoading(false)
+      console.error('EmailJS 오류:', err)
+      alert('전송 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.')
+    }
   }
 
   const inputClass = "w-full bg-white border border-navy/15 rounded-xl px-5 py-4 text-navy placeholder-navy/30 transition-all duration-200"
